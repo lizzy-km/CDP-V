@@ -1,35 +1,103 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import React from 'react';
+import { Button, Checkbox, Form, Input, Flex } from 'antd';
+const onFinish = (values) => {
+  console.log('Success:', values);
+};
+const onFinishFailed = (errorInfo) => {
+  console.log('Failed:', errorInfo);
+};
+const App = () => (
+  <Flex
+  style={{
+    width:'100%',
+    height:'100vh',
+    justifyContent:"center",
+    alignItems:"center"
+  }}
+  >
+    <Form
+    name="basic"
+   
+    style={{
+      backgroundColor:'white',
+      padding:'1rem',
+      borderRadius:'10px',
+      display:"flex",
+      flexDirection:'column',
+      justifyContent:'center',
+      alignItems:'center',
+      width:"40%",
+      gap:"10px",
+      boxShadow:"0px 0px 4px #2121"
 
-function App() {
-  const [count, setCount] = useState(0)
+    }}
+    initialValues={{
+      remember: true,
+    }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete="off"
+  >
+    <p
+    style={{
+      fontSize:'200%',
+      alignSelf:'start'
+    }}
+    >
+      SignIn
+    </p>
+    <Form.Item
+      label="Username"
+      name="username"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your username!',
+        },
+      ]}
+      style={{
+        width:"90%",
+        paddingLeft:"1rem",
+      }}
+    >
+      <Input />
+    </Form.Item>
 
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Form.Item
+      label="Password"
+      name="password"
+      rules={[
+        {
+          required: true,
+          message: 'Please input your password!',
+        },
+      ]}
+      style={{
+        width:"90%",
+        paddingLeft:"1rem"
+      }}
+    >
+      <Input.Password />
+    </Form.Item>
 
-export default App
+    
+
+    <Form.Item
+      style={{
+        width:"90%"
+      }}
+    >
+      <Button
+      style={{
+        width:"100%"
+      }}
+       type="primary" htmlType="submit">
+        Login
+      </Button>
+    </Form.Item>
+  </Form>
+  </Flex>
+  
+);
+export default App;
