@@ -42,6 +42,10 @@ function လုပ်ဆောင်ချက်ထည့်ပါ(obj) {
   };
 }
 
+// const classList_ထည့်ပါ = (obj,class) => obj.classList.add(class)
+
+const classList_ထည့်ပါ = (obj,className)=>obj.classList.add(className)
+
 let Idဖြင့်Elementကိုရယူပါ = (id) => document.getElementById(id);
 
 const အဓိက = Idဖြင့်Elementကိုရယူပါ("အဓိက");
@@ -56,12 +60,12 @@ const ထည့်သွင်းထားသောအမည် = Idဖြင့
 လုပ်ဆောင်ချက်ထည့်ပါ(ခလုတ်)(နှိပ်ပါ, () => {
   const စစ်ထုတ်ထားသော_အမည် = အမည်ဖြင့်_စစ်ထုတ်ပါ(
     အမဲပန်းအဖွဲ့,
-    ထည့်သွင်းထားသောအမည်.value.length > 3 ? ထည့်သွင်းထားသောအမည်.value : 'none'
+    ထည့်သွင်းထားသောအမည်.value.length > 3 ? ထည့်သွင်းထားသောအမည်.value : "none"
   ).map((အမဲပန်း) => အမဲပန်း.အမည်);
   const သေတ္တာ = သေတ္တာအသစ်ကိုဖန်တီးပါ("div");
   စစ်ထုတ်ထားသော_အမည်.length > 0
-    ? သေတ္တာ.classList.add("successBp")
-    : သေတ္တာ.classList.add("error");
+    ? classList_ထည့်ပါ(သေတ္တာ,"successBp")
+    : classList_ထည့်ပါ(သေတ္တာ,"error");
 
   const စာသားအသစ် = စာသားအသစ်ဖန်တီးပါ(
     စစ်ထုတ်ထားသော_အမည်.length > 0 ? စစ်ထုတ်ထားသော_အမည် : "မရှိပါ။"
