@@ -1,23 +1,50 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Javascript</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body id="ခန္ဓာကိုယ်" style="padding: 0; margin:0; height:100vh" >
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Javascript</title>
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body id="ခန္ဓာကိုယ်" style="padding: 0; margin: 0; height: 100vh">
+    <header>
+      <h1>JS For Beginners</h1>
+    </header>
+   
 
-       <div
-       style="background-color: antiquewhite;"
-       
-       id="အဓိက" >
-            
-       <button id="ခလုတ်" type="button">Button</button>
-       </div>
-        
-        <script src="main.js" async defer></script>
-    </body>
+    <section class="container">
+        <form id="my-form">
+          <h1>Add User</h1>
+          <div class="msg"></div>
+          <div>
+            <label for="name">Name:</label>
+            <input type="text" id="name">
+          </div>
+          <div>
+            <label for="email">Email:</label>
+            <input type="text" id="email">
+          </div>
+          <input class="btn" type="submit" value="Submit">
+        </form>
+  
+        <ul id="users"></ul>
+  
+        <!-- <ul class="items">
+          <li class="item">Item 1</li>
+          <li class="item">Item 2</li>
+          <li class="item">Item 3</li>
+        </ul> -->
+      </section>
+
+      <!-- testing  -->
+      <!-- <div style="background-color: antiquewhite" id="အဓိက">
+        <button id="ခလုတ်" type="button">Button</button>
+      </div> -->
+
+    <script src="main.js" ></script>
+    <script src="index.js" ></script>
+
+  </body>
 </html>
