@@ -6,13 +6,11 @@
 // console.error('This is an error');
 // console.warn('This is a warning');
 
-
 // // VARIABLES - var, let, const
 // // let age = 30;
 
 // // let can be re-assigned, const can not
 // // age = 31;
-
 
 // // DATA TYPES - String, Number, Boolean, null, undefined
 // const name = 'Brad';
@@ -25,7 +23,6 @@
 
 // // Check type
 // console.log(typeof z);
-
 
 // // STRINGS
 
@@ -46,8 +43,6 @@
 // val = s.substring(0, 5);
 // // Split into array
 // val = s.split('');
-
-
 
 // // ARRAYS - Store multiple values in a variable
 // const numbers = [1,2,3,4,5];
@@ -74,8 +69,6 @@
 
 // // // Get index
 // console.log(fruits.indexOf('oranges'));
-
-
 
 // // OBJECT LITERALS
 // const person = {
@@ -126,7 +119,6 @@
 // // Format as JSON
 // console.log(JSON.stringify(todos));
 
-
 // // LOOPS
 
 // // For
@@ -152,7 +144,6 @@
 //   console.log(todo.text);
 // }
 
-
 // // HIGH ORDER ARRAY METHODS (show prototype)
 
 // // forEach() - Loops through array
@@ -171,9 +162,8 @@
 // // filter() - Returns array based on condition
 // const todo1 = todos.filter(function(todo) {
 //   // Return only todos where id is 1
-//   return todo.id === 1; 
+//   return todo.id === 1;
 // });
-
 
 // // CONDITIONALS
 
@@ -196,14 +186,12 @@
 //     console.log('color is red');
 //   case 'blue':
 //     console.log('color is blue');
-//   default:  
+//   default:
 //     console.log('color is not red or blue')
 // }
 
 // // Ternary operator / Shorthand if
 // const z = color === 'red' ? 10 : 20;
-
-
 
 // FUNCTIONS
 // function greet(greeting = 'Hello', name) {
@@ -216,11 +204,9 @@
 //   }
 // }
 
-
 // ARROW FUNCTIONS
 // const greet = (greeting = 'Hello', name = 'There') => `${greeting} ${name}`;
 // console.log(greet('Hi'));
-
 
 // // OOP
 
@@ -248,7 +234,6 @@
 //   return `${this.firstName} ${this.lastName}`
 // }
 
-
 // // Instantiate an object from the class
 // const person1 = new Person('John', 'Doe', '7-8-80');
 // const person2 = new Person('Steve', 'Smith', '8-2-90');
@@ -258,14 +243,11 @@
 // // console.log(person1.getBirthYear());
 // // console.log(person1.getFullName());
 
-
-
 // // Built in constructors
 // const name = new String('Kevin');
 // console.log(typeof name); // Shows 'Object'
 // const num = new Number(5);
 // console.log(typeof num); // Shows 'Object'
-
 
 // // ES6 CLASSES
 // class Person {
@@ -289,32 +271,29 @@
 // const person1 = new Person('John', 'Doe', '7-8-80');
 // console.log(person1.getBirthYear());
 
-
 // // ELEMENT SELECTORS
 
 // // Single Element Selectors
 // console.log(document.getElementById('my-form'));
-// console.log(document.querySelector('.container'));
+// console.log(getElementByQuery('.container'));
 // // Multiple Element Selectors
-// console.log(document.querySelectorAll('.item'));
+// console.log(getElementByQueryAll('.item'));
 // console.log(document.getElementsByTagName('li'));
 // console.log(document.getElementsByClassName('item'));
 
-// const items = document.querySelectorAll('.item');
+// const items = getElementByQueryAll('.item');
 // items.forEach((item) => console.log(item));
 
-
 // MANIPULATING THE DOM
-// const ul = document.querySelector('.items');
+// const ul = getElementByQuery('.items');
 // // ul.remove();
 // // ul.lastElementChild.remove();
 // ul.firstElementChild.textContent = 'Hello';
 // ul.children[1].innerText = 'Brad';
 // ul.lastElementChild.innerHTML = '<h1>Hello</h1>';
 
-// const btn = document.querySelector('.btn');
+// const btn = getElementByQuery('.btn');
 // btn.style.background = 'red';
-
 
 // EVENTS
 
@@ -323,54 +302,75 @@
 //   e.preventDefault();
 //   console.log(e.target.className);
 //   document.getElementById('my-form').style.background = '#ccc';
-//   document.querySelector('body').classList.add('bg-dark');
+//   getElementByQuery('body').classList.add('bg-dark');
 //   ul.lastElementChild.innerHTML = '<h1>Changed</h1>';
 // });
 
 // // Keyboard Event
-// const nameInput = document.querySelector('#name');
+// const nameInput = getElementByQuery('#name');
 // nameInput.addEventListener('input', e => {
-//   document.querySelector('.container').append(nameInput.value);
+//   getElementByQuery('.container').append(nameInput.value);
 // });
-
 
 // USER FORM SCRIPT
 
 // Put DOM elements into variables
-const myForm = document.querySelector('#my-form');
-const nameInput = document.querySelector('#name');
-const emailInput = document.querySelector('#email');
-const msg = document.querySelector('.msg');
-const userList = document.querySelector('#users');
+const getElementByQuery = (query) => document.querySelector(query);
+
+function listenerFun(obj) {
+  return function (evn, func) {
+    return obj.addEventListener(evn, func);
+  };
+}
+
+function createNewElement(obj) {
+  return document.createElement(obj);
+}
+
+function createTextNode(text) {
+  return document.createTextNode(text);
+}
+
+function appendElementChild(obj, innerObj) {
+  return obj.appendChild(innerObj);
+}
+
+const myForm = getElementByQuery("#my-form");
+const nameInput = getElementByQuery("#name");
+const emailInput = getElementByQuery("#email");
+const msg = getElementByQuery(".msg");
+const userList = getElementByQuery("#users");
 
 // Listen for form submit
-myForm.addEventListener('submit', onSubmit);
+listenerFun(myForm)("submit", onSubmit);
 
 function onSubmit(e) {
   e.preventDefault();
-  
-  if(nameInput.value === '' || emailInput.value === '') {
+
+  if (nameInput.value === "" || emailInput.value === "") {
     // alert('Please enter all fields');
-    msg.classList.add('error');
-    msg.innerHTML = 'Please enter all fields';
+    msg.classList.add("error");
+    msg.innerHTML = "Please enter all fields";
 
     // Remove error after 3 seconds
     setTimeout(() => msg.remove(), 3000);
   } else {
     // Create new list item with user
-    const li = document.createElement('li');
+    const li = createNewElement("li");
 
     // Add text node with input values
-    li.appendChild(document.createTextNode(`${nameInput.value}: ${emailInput.value}`));
+    appendElementChild(li,createTextNode(`${nameInput.value}: ${emailInput.value}`))
+    // li.appendChild(createTextNode(`${nameInput.value}: ${emailInput.value}`));
 
     // Add HTML
     // li.innerHTML = `<strong>${nameInput.value}</strong>e: ${emailInput.value}`;
 
     // Append to ul
-    userList.appendChild(li);
+
+    appendElementChild(userList,li)
 
     // Clear fields
-    nameInput.value = '';
-    emailInput.value = '';
+    nameInput.value = "";
+    emailInput.value = "";
   }
 }
