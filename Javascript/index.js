@@ -358,6 +358,11 @@ function onSubmit(e) {
     // Create new list item with user
     const li = createNewElement("li");
 
+    msg.classList.add("success");
+    msg.innerHTML = "Add Name Successfully";
+
+    // Remove error after 3 seconds
+    setTimeout(() => msg.remove(), 3000);
     // Add text node with input values
     appendElementChild(li,createTextNode(`${nameInput.value}: ${emailInput.value}`))
     // li.appendChild(createTextNode(`${nameInput.value}: ${emailInput.value}`));
